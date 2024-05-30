@@ -1,0 +1,40 @@
+﻿<Window x:Class="Tema_3.Views.ProducersWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Tema_3.Views"
+        xmlns:vm="clr-namespace:Tema_3.ViewModels"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="ProducersWindow" Height="800" Width="1200">
+    <Window.DataContext>
+        <vm:ProducersVM/>
+    </Window.DataContext>
+    <Grid>
+        <DataGrid Name="personsGrid" Height="400" Width="500" CanUserReorderColumns="False" 
+               SelectedItem="{Binding Producer}"
+               
+               ItemsSource="{Binding ProducersList}" IsReadOnly="True" Margin="186,351,514,33">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Binding="{Binding IdProducer}" Width="50" />
+                <DataGridTextColumn Header="Name" Binding="{Binding NameProducer}" Width="250"/>
+                <DataGridTextColumn Header="Country" Binding="{Binding Country}" Width="130"/>
+                <DataGridTextColumn Header="IsDeleted" Binding="{Binding IsDeletedProducer}" Width="70"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <TextBox  FontSize="20" HorizontalAlignment="Left" Margin="186,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="500" Height="40" Text="{Binding Producer.Name}"/>
+        <TextBox  FontSize="20" HorizontalAlignment="Left" Margin="186,141,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="500" Height="40" Text="{Binding Producer.Country}"/>
+        <TextBox  FontSize="20" HorizontalAlignment="Left" Margin="186,201,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="500" Height="40" Text="{Binding Producer.IsDeleted}"/>
+
+        <Label Content="Name:" FontSize="18" HorizontalAlignment="Left" Margin="86,80,0,0" VerticalAlignment="Top" Height="40" Width="94"/>
+        <Label Content="Country:" FontSize="18" HorizontalAlignment="Left" Margin="86,141,0,0" VerticalAlignment="Top" Height="40" Width="94"/>
+        <Label Content="IsDeleted:" FontSize="18" HorizontalAlignment="Left" Margin="86,201,0,0" VerticalAlignment="Top" Height="40" Width="94"/>
+
+        <Button Content="Add Producer" FontSize="20" HorizontalAlignment="Left" Margin="913,75,0,0" VerticalAlignment="Top" Height="81" Width="173" Command="{Binding AddProducer}"/>
+        <Button Content="Modify Producer" FontSize="20" HorizontalAlignment="Left" Margin="913,180,0,0" VerticalAlignment="Top" Height="82" Width="173" Command="{Binding ModifyProducer}"/>
+        <Button Content="Delete Producer" FontSize="20" HorizontalAlignment="Left" Margin="913,288,0,0" VerticalAlignment="Top" Height="81" Width="173" Command="{Binding DeleteUser}"/>
+        <Button Content="Back" FontSize="20" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="35" Width="70" Command="{Binding GoBack}"/>
+
+    </Grid>
+</Window>

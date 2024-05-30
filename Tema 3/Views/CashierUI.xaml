@@ -1,0 +1,48 @@
+﻿<Window x:Class="Tema_3.Views.CashierUI"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Tema_3.Views"
+        xmlns:vm="clr-namespace:Tema_3.ViewModels"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="CashierUI" Height="800" Width="1200">
+    <Window.DataContext>
+        <vm:CashierVM/>
+    </Window.DataContext>
+    <Grid>
+        <DataGrid Margin="80,392,630,48" CanUserReorderColumns="False" 
+           SelectedItem="{Binding ProductStocks}" AutoGenerateColumns="False"
+           ItemsSource="{Binding ProductListSearch}" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name" Binding="{Binding ProductName}" Width="200" />
+                <DataGridTextColumn Header="Quantity" Binding="{Binding Quantity}" Width="100"/>
+                <DataGridTextColumn Header="Barcode" Binding="{Binding SalePrice}" Width="100"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <DataGrid Margin="629,392,80,48" CanUserReorderColumns="False" 
+           AutoGenerateColumns="False"
+           ItemsSource="{Binding ProductListOnBill}" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name" Binding="{Binding NameProductOnBill}" Width="200" />
+                <DataGridTextColumn Header="Quantity" Binding="{Binding QuantityProductOnBill}" Width="100"/>
+                <DataGridTextColumn Header="SubTotal" Binding="{Binding SubTotal}" Width="100"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <TextBox HorizontalAlignment="Left" Margin="80,116,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="380" Height="30" Text="{Binding NameBarcode}"/>
+        <TextBox HorizontalAlignment="Left" Margin="155,220,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="30" Width="171" Text="{Binding ProductStocks.ProductName}"/>
+        <TextBox HorizontalAlignment="Left" Margin="155,280,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="30" Width="171" Text="{Binding Quantity}"/>
+        <TextBox HorizontalAlignment="Left" Margin="752,357,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="30" Width="368" Text="{Binding Total}"/>
+
+        <Button Content="Search" HorizontalAlignment="Left" Margin="491,116,0,0" VerticalAlignment="Top" Height="30" Width="79" Command="{Binding Search}"/>
+        <Button Content="Add" HorizontalAlignment="Left" Margin="381,220,0,0" VerticalAlignment="Top" Height="30" Width="79" Command="{Binding AddOnBill}"/>
+        <Button Content="Print Recepit" HorizontalAlignment="Left" Margin="1041,322,0,0" VerticalAlignment="Top" Height="30" Width="79" Command="{Binding PrintReceipt}"/>
+
+        <Label Content="Name: " HorizontalAlignment="Left" Margin="80,220,0,0" VerticalAlignment="Top" Height="30" Width="70"/>
+        <Label Content="Quantity: " HorizontalAlignment="Left" Margin="80,280,0,0" VerticalAlignment="Top" Height="30" Width="70"/>
+
+
+
+    </Grid>
+</Window>

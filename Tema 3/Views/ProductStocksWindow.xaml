@@ -1,0 +1,55 @@
+﻿<Window x:Class="Tema_3.Views.ProductStocksWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Tema_3.Views"
+        xmlns:vm="clr-namespace:Tema_3.ViewModels"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="ProductStocksWindow" Height="800" Width="1200">
+    <Window.DataContext>
+        <vm:ProductStocksVM/>
+    </Window.DataContext>
+    <Grid>
+        <DataGrid Name="personsGrid" CanUserReorderColumns="False" Width="850"
+    SelectedItem="{Binding ProductStock}" AutoGenerateColumns="False"
+    
+    ItemsSource="{Binding ProductStocksList}" IsReadOnly="True" Margin="45,395,304,61">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Binding="{Binding IdProductStocks}" Width="50" />
+                <DataGridTextColumn Header="Quantity" Binding="{Binding Quantity}" Width="100"/>
+                <DataGridTextColumn Header="UnitMeasure" Binding="{Binding UnitMeasure}" Width="100"/>
+                <DataGridTextColumn Header="SupplyDate" Binding="{Binding SupplyDate}" Width="100"/>
+                <DataGridTextColumn Header="ExpirationDate" Binding="{Binding ExpirationDate}" Width="100"/>
+                <DataGridTextColumn Header="PurchasePrice" Binding="{Binding PurchasePrice}" Width="100"/>
+                <DataGridTextColumn Header="SalePrice" Binding="{Binding SalePrice}" Width="100"/>
+                <DataGridTextColumn Header="Product Name" Binding="{Binding ProductName}" Width="100"/>
+                <DataGridTextColumn Header="IsDeleted" Binding="{Binding IsDeletedProductStock}" Width="100"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <TextBox  FontSize="20" HorizontalAlignment="Left" Margin="288,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="500" Height="40" Text="{Binding ProductStock.Quantity}"/>
+        <TextBox  FontSize="20" HorizontalAlignment="Left" Margin="288,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="500" Height="40" Text="{Binding ProductStock.UnitMeasure}"/>
+        <TextBox  FontSize="20" HorizontalAlignment="Left" Margin="288,125,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="500" Height="40" Text="{Binding ProductStock.SupplyDate}"/>
+        <TextBox  FontSize="20" HorizontalAlignment="Left" Margin="288,170,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="500" Height="40" Text="{Binding ProductStock.ExpirationDate}"/>
+        <TextBox  FontSize="20" HorizontalAlignment="Left" Margin="288,215,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="500" Height="40" Text="{Binding ProductStock.PurchasePrice}"/>
+        <TextBox  FontSize="20" HorizontalAlignment="Left" Margin="288,260,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="500" Height="40" Text="{Binding ProductStock.SalePrice}"/>
+        <TextBox  FontSize="20" HorizontalAlignment="Left" Margin="288,305,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="500" Height="40" Text="{Binding ProductStock.ProductName}"/>
+        <TextBox  FontSize="20" HorizontalAlignment="Left" Margin="288,350,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="500" Height="40" Text="{Binding ProductStock.IsDeletedProductStock}"/>
+
+        <Label Content="Quantity:" FontSize="18" HorizontalAlignment="Left" Margin="133,35,0,0" VerticalAlignment="Top" Height="40" Width="150"/>
+        <Label Content="UnitMeasure:" FontSize="18" HorizontalAlignment="Left" Margin="133,80,0,0" VerticalAlignment="Top" Height="40" Width="150"/>
+        <Label Content="SuppplyDate:" FontSize="18" HorizontalAlignment="Left" Margin="133,125,0,0" VerticalAlignment="Top" Height="40" Width="150"/>
+        <Label Content="ExpirationDate:" FontSize="18" HorizontalAlignment="Left" Margin="133,170,0,0" VerticalAlignment="Top" Height="40" Width="150"/>
+        <Label Content="Purchase Price:" FontSize="18" HorizontalAlignment="Left" Margin="133,215,0,0" VerticalAlignment="Top" Height="40" Width="150"/>
+        <Label Content="Sale Price:" FontSize="18" HorizontalAlignment="Left" Margin="133,260,0,0" VerticalAlignment="Top" Height="40" Width="150"/>
+        <Label Content="Product Name:" FontSize="18" HorizontalAlignment="Left" Margin="133,305,0,0" VerticalAlignment="Top" Height="40" Width="150" RenderTransformOrigin="0.501,-0.289"/>
+        <Label Content="Is Deleted:" FontSize="18" HorizontalAlignment="Left" Margin="133,350,0,0" VerticalAlignment="Top" Height="40" Width="150" RenderTransformOrigin="0.501,-0.289"/>
+
+        <Button Content="Add Product" FontSize="20" HorizontalAlignment="Left" Margin="913,75,0,0" VerticalAlignment="Top" Height="81" Width="173" Command="{Binding AddStock}"/>
+        <Button Content="Modify Product" FontSize="20" HorizontalAlignment="Left" Margin="913,180,0,0" VerticalAlignment="Top" Height="82" Width="173" Command="{Binding ModifyStock}"/>
+        <Button Content="Delete Product" FontSize="20" HorizontalAlignment="Left" Margin="913,288,0,0" VerticalAlignment="Top" Height="81" Width="173" Command="{Binding DeleteStock}"/>
+        <Button Content="Back" FontSize="20" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="35" Width="70" Command="{Binding GoBack}"/>
+
+    </Grid>
+</Window>
